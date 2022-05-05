@@ -30,7 +30,7 @@ class Qlearning:
     def train(self):
 
         print("Started training")
-        explor_rate = args.explor_rate
+        explor_rate = args.start_explor_rate
         rewards_all_episodes = []
 
         for episode in tqdm(range(args.episodes)):
@@ -52,7 +52,7 @@ class Qlearning:
                     # Explore - pick random action
                     action = random.randrange(0, 5)  # [0..4]
 
-                new_state, reward, goal = self.env.step(action)
+                new_state, reward, goal, _, _ = self.env.step(action)
 
                 # Q-table update for the Q(s,a)
                 self.q_table[state, action] = self.q_table[state, action] * (1 - args.lr) + \
@@ -66,14 +66,15 @@ class Qlearning:
 
                 # See if episode is finished
                 if goal:
-                    print(f"\nGoal reached: episode={episode}, y=199, x=199, state={state}, steps={step}, "
-                          f"rewards={rewards_curr_episode:.5f}")
+                    print(f'\nGoal reached: episode={episode}, y=199, x=199, state={state}, steps={step}, '
+                          f'rewards={rewards_curr_episode:.5f}, revisited={self.env.revisited}')
                     break
 
             if episode % 10 == 0:
                 self.print_q_table()
-                print(f"Episode={episode}, step={step}, state={state}, rewards={rewards_curr_episode:.5f}, "
-                      f"explr_rate={explor_rate:.5f}, non_zero={np.count_nonzero(self.q_table)}")
+                print(f'Episode={episode}, step={step}, state={state}, rewards={rewards_curr_episode:.5f}, '
+                      f'explr_rate={explor_rate:.5f}, non_zero={np.count_nonzero(self.q_table)}, '
+                      f'revisited={self.env.revisited}')
 
             # Reduce the exploration rate
             # explor_rate = args.end_explor_rate + (args.start_explor_rate - args.end_explor_rate) \
