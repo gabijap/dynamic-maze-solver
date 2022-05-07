@@ -7,17 +7,21 @@ from qlearning import Qlearning
 
 if __name__ == "__main__":
 
-    print("Starting")
-    pprint(vars(args))
+    print('\nCurrent configuration:\n')
+    pprint(vars(args), sort_dicts=False)
 
-    if args.method == "dqn":
-        # Solve by DQN method
-        train()
-    else:
+    if args.method == "ql":
         # Solve by Q-learning method
         ql = Qlearning()
-        ql.train()
-        # ql.play()
 
-    print("Completed")
-    pprint(vars(args))
+        if args.train:
+            ql.train()
+        if args.play:
+            ql.play()
+
+    else:
+        # Solve by DQN method
+        if args.train:
+            train()
+        if args.play:
+            print('TBD')

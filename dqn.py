@@ -12,8 +12,8 @@ import torch.nn.functional as F
 import torch.optim as optim
 from tqdm import tqdm
 
-from environment import Environment
 from buffer import ReplayBuffer
+from environment import Environment
 from params import args
 from utilities import plot
 
@@ -32,7 +32,6 @@ class DQN(nn.Module):
         self.fc1 = nn.Linear(in_features=state_vector_size, out_features=128)  # 24, or 128
         self.fc2 = nn.Linear(in_features=128, out_features=256)  # 24 and 32, or 128 and 256
         self.out = nn.Linear(in_features=256, out_features=args.actions_available)  # 32, or 256
-
 
     # forward() is executed when policy_net(t) or target_net(t) is called
     def forward(self, t):
@@ -162,7 +161,7 @@ def train():
                 with torch.no_grad():
                     t_action = policy_net(t_first_state).argmax(dim=1).to(device)
 
-                print(f'episode={episode}, step={step}, loss={loss:.3f}, state={new_state}, '
+                print(f'episode={episode}, step={step}, loss={loss:.5f}, state={new_state}, '
                       f'reward={rewards_curr_episode:.3f}, rate={explor_rate:.3f}, actions={actions_history}, '
                       f'total_visited={env.get_total_visited()}, visited={env.get_visited()}, '
                       f'revisited={env.revisited}, capacity={len(buffer)}, 1st_action={t_action[0]}')
