@@ -6,13 +6,13 @@ import json
 import random
 
 import numpy as np
-from tensorboardX import SummaryWriter
+#from tensorboardX import SummaryWriter
 from tqdm import tqdm
 
 from environment import Environment
 from params import args
 
-writer = SummaryWriter(comment=f'-{args.description}')
+#writer = SummaryWriter(comment=f'-{args.description}')
 
 # Create separate random number generator
 r = random.Random(1)
@@ -97,7 +97,7 @@ class Qlearning:
             # Calculate win rate
             self.update_win_rate(goal)
 
-        writer.flush()
+        #writer.flush()
         self.phase += 1
 
     def print_status(self, goal, episode, step, state, rewards_curr_episode):
@@ -108,14 +108,15 @@ class Qlearning:
             f'walls={self.env.walls}|win_rate={self.win_rate:.2f}|actions={self.actions_history}')
 
     def plot_status(self, episode, steps, rewards_curr_episode):
-        writer.add_scalar("steps/episodes", steps, episode)
-        writer.add_scalar("rewards/episodes", rewards_curr_episode, episode)
-        writer.add_scalar("epsilon/episodes", self.explor_rate, episode)
-        writer.add_scalar("non_zero/episodes", np.count_nonzero(self.q_table), episode)
-        writer.add_scalar("revisited/episodes", self.env.revisited, episode)
-        writer.add_scalar("fires/episodes", self.env.fires, episode)
-        writer.add_scalar("walls/episdoes", self.env.walls, episode)
-        writer.add_scalar("wins/episodes", self.win_rate, episode)
+        #writer.add_scalar("steps/episodes", steps, episode)
+        #writer.add_scalar("rewards/episodes", rewards_curr_episode, episode)
+        #writer.add_scalar("epsilon/episodes", self.explor_rate, episode)
+        #writer.add_scalar("non_zero/episodes", np.count_nonzero(self.q_table), episode)
+        #writer.add_scalar("revisited/episodes", self.env.revisited, episode)
+        #writer.add_scalar("fires/episodes", self.env.fires, episode)
+        #writer.add_scalar("walls/episdoes", self.env.walls, episode)
+        #writer.add_scalar("wins/episodes", self.win_rate, episode)
+        pass
 
     def save_model(self, ql_model_file):
         # Save Q-table training parameters
