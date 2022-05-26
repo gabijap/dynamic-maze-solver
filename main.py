@@ -16,7 +16,7 @@ if __name__ == "__main__":
         ql = Qlearning()
 
         if args.train:
-            # Train once without fire to memorize walls.
+            # Train once without fire to memorize walls (first-phase of training)
             ql.train(1, 5500, args.steps, args.start_explor_rate)
 
             # Save Q-table for further use
@@ -28,7 +28,7 @@ if __name__ == "__main__":
             # Copy walls, so that we do not hit at least walls during fires 
             # ql.copy_walls()
 
-            # Train with fires
+            # Train with fires (second-phase of training)
             ql.train(0, 9500, args.steps, args.start_explor_rate_fire)  # THIS WAS OK: 5500
 
             ql.save_model(args.ql_fires_model_file)
