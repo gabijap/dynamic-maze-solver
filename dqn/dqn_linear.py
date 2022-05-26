@@ -1,3 +1,12 @@
+"""
+This is an experimental script for using the DQN with a linear neural network to solve the maze. It was experimented with
+smaller mazes and then adapted to the original maze, however, this needs future work.
+
+The code in this script is adapted from two sources:
+[Source code] https://www.samyzaf.com/ML/rl/qmaze.html
+[Source code] https://github.com/philtabor/Youtube-Code-Repository/blob/master/ReinforcementLearning/DeepQLearning/simple_dqn_torch_2020.py
+"""
+
 from __future__ import print_function
 
 import argparse
@@ -183,10 +192,7 @@ def get_local_maze_information(x, y):
                 maze_cells[x - 1 + i][y - 1 + j][1] = around[i][j][1]
     return around
 
-
-# ENVIRONMENT
-
-
+# Adapted from [Source code] https://www.samyzaf.com/ML/rl/qmaze.html
 class Maze:
     def __init__(self, maze, rat=(0, 0)):
 
@@ -301,8 +307,6 @@ class Maze:
         return actions
 
 
-# SUPLEMENTAL
-
 def show(qmaze):
     # fig, axs = plt.subplots(1, 1, figsize=(36, 24), constrained_layout=True)
     plt.grid('on')
@@ -408,9 +412,10 @@ class DeepQNetwork(nn.Module):
         actions = self.output_layer(layer_3_output)
         return actions
 
-
-# Q-LEARNING
-
+"""
+Adapted from [Source code] 
+https://github.com/philtabor/Youtube-Code-Repository/blob/master/ReinforcementLearning/DeepQLearning/simple_dqn_torch_2020.py
+"""
 class Agent:
     def __init__(self, gamma, epsilon, lr, input_dims, batch_size, n_actions,
                  max_mem_size, eps_end, eps_dec):
