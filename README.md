@@ -101,25 +101,30 @@ Below is the brief summary of the directory tree.
 
     ./
     ├── README.md
-    ├── buffer.py                                       -> Buffer (reply memory) implementation for DQN training
-    ├── cache.py                                        -> cache buffer for faster access to maze (without fires) 
+    |
     ├── checkpoint                                      -> Various result files
-    │   ├── 2022_05_06_15_45_09_params.json             -> Result parameters file
-    │   ├── 2022_05_06_15_45_09_ql_path.csv             -> Result path file
-    │   ├── 2022_05_06_15_45_09_ql_qtable.csv           -> Result Q-Table file in CSV format
-    │   ├── 2022_05_06_15_45_09_ql_qtable.npy           -> Result Q-Table file in binary format
-    │   └── 2022_05_06_15_45_09_ql_trace.txt            -> Result trace file
-    ├── data                                            -> Miscellaneous illustration files
-    │   ├── maze.csv                                    -> Maze in CSV format
-    │   ├── qtable.csv                                  -> Q-Table in CSV format
-    │   └── qtable.xlsx                                 -> Q-Table in Excel format
-    ├── dqn.py                                          -> DQN implementation
+    │   ├── 2022_05_23_22_27_18_params.json             -> Result parameters file (final)
+    │   ├── 2022_05_23_22_27_18_ql_output.txt           -> Result output file (final)
+    │   └── 2022_05_23_22_27_18_ql_qtable_fires.npy     -> Result Q-Table with fires file in a binary format (final)
+    ├── final                                           -> Folder containing final results 
+    │   ├── 2022_05_23_22_03_21_ql_qtable_walls.npy     -> Result Q-Table without fires file in a binary format
+    │   ├── 2022_05_23_22_27_18_ql_output.txt           -> Output file
+    │   └── 2022_05_23_22_27_18_ql_qtable_fires.npy     -> Result Q-Table with fires file in a binary format
+    ├── dqn                                             -> Folder containing experiments with DQN (only for an attempt)
+        ├── buffer.py                                   -> Buffer (reply memory) implementation for DQN training
+        ├── dqn.py                                      -> DQN implementation
+        ├── dqn_linear.py                               -> DQN with a linear neural network implementation
+        ├── dqn_model.py                                -> DQN with a convolutional neural network implementation
+        ├── dqn_train.py                                -> DQN with a convolutional neural network training
+        ├── utilities.py                                -> Script for plotting results for DQN
+    ├── cache.py                                        -> cache buffer for faster access to maze (without fires)
     ├── environment.py                                  -> Maze environment implementation
     ├── main.py                                         -> Main entry point
     ├── COMP6247Maze20212022.npy                        -> Original maze data file
+    ├── Makefile                                        -> Commands for running common functions such as train or play
     ├── params.py                                       -> Parameters file
     ├── qlearning.py                                    -> Q-Learning implementation
     ├── read_maze.py                                    -> Original maze interface
-    └── read_maze_fast.py                               -> Maze interface optimized for speed
+    └── samples.sh                                      -> Script for running various experiments
 
 
