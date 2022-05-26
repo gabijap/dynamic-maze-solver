@@ -1,6 +1,6 @@
 # Q-Learning
 
-Implementation of the basic Q-Learning algorithm on dynamic maze. Exact sample maze (with fires) is provided below:
+Implementation of the basic Q-Learning algorithm on a dynamic maze. The exact sample maze (with fires) is provided below:
 
 ![image](https://user-images.githubusercontent.com/25717176/165905402-b84a6632-d155-46c4-9651-6e55137fc592.png)
 

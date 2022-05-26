@@ -82,17 +82,12 @@ class Qlearning:
             if episode % 50 == 0:
                 tqdm.write(f'\nQ-table:\n{self.q_table[202:207]}')
                 self.print_status(goal, episode, step, state, rewards_curr_episode)
-                self.plot_status(episode, step, rewards_curr_episode)
+                #self.plot_status(episode, step, rewards_curr_episode)
                 self.play()
 
             # Reduce the exploration rate
-            # if self.win_rate < 1.0:
             self.explor_rate = args.end_explor_rate + (start_explor_rate - args.end_explor_rate) \
                                * np.exp(- args.ql_explor_decay_rate * episode)
-            # else:
-            # Target win rate is reached.
-            # self.explor_rate = 0.0
-            # break
 
             # Calculate win rate
             self.update_win_rate(goal)
@@ -101,22 +96,23 @@ class Qlearning:
         self.phase += 1
 
     def print_status(self, goal, episode, step, state, rewards_curr_episode):
+        # Print the current status of the game
         tqdm.write(
             f'Goal={goal}|phase={self.phase}|neglect_fire={self.neglect_fire}|episode={episode}|steps={step}|'
             f'state={state}|rewards={rewards_curr_episode:.2f}|explr_rate={self.explor_rate:.3f}|'
             f'non_zero={np.count_nonzero(self.q_table)}|revisited={self.env.revisited}|fires={self.env.fires}|'
             f'walls={self.env.walls}|win_rate={self.win_rate:.2f}|actions={self.actions_history}')
 
-    def plot_status(self, episode, steps, rewards_curr_episode):
-        #writer.add_scalar("steps/episodes", steps, episode)
-        #writer.add_scalar("rewards/episodes", rewards_curr_episode, episode)
-        #writer.add_scalar("epsilon/episodes", self.explor_rate, episode)
-        #writer.add_scalar("non_zero/episodes", np.count_nonzero(self.q_table), episode)
-        #writer.add_scalar("revisited/episodes", self.env.revisited, episode)
-        #writer.add_scalar("fires/episodes", self.env.fires, episode)
-        #writer.add_scalar("walls/episdoes", self.env.walls, episode)
-        #writer.add_scalar("wins/episodes", self.win_rate, episode)
-        pass
+    '''def plot_status(self, episode, steps, rewards_curr_episode):
+        # Plot results on the Tensorboard (comment out as this is useful when training)
+        writer.add_scalar("steps/episodes", steps, episode)
+        writer.add_scalar("rewards/episodes", rewards_curr_episode, episode)
+        writer.add_scalar("epsilon/episodes", self.explor_rate, episode)
+        writer.add_scalar("non_zero/episodes", np.count_nonzero(self.q_table), episode)
+        writer.add_scalar("revisited/episodes", self.env.revisited, episode)
+        writer.add_scalar("fires/episodes", self.env.fires, episode)
+        writer.add_scalar("walls/episdoes", self.env.walls, episode)
+        writer.add_scalar("wins/episodes", self.win_rate, episode)'''
 
     def save_model(self, ql_model_file):
         # Save Q-table training parameters

@@ -2,7 +2,7 @@ import numpy as np
 
 from cache import Cache
 from params import args
-from read_maze import load_maze, get_local_maze_information
+from read_maze import get_local_maze_information
 
 
 class Environment:
