@@ -4,24 +4,22 @@ Implementation of the basic Q-Learning algorithm on dynamic maze. Exact sample m
 
 ![image](https://user-images.githubusercontent.com/25717176/165905402-b84a6632-d155-46c4-9651-6e55137fc592.png)
 
-## To Do
-
-- [x] tune basic parameters (found least steps required at: max_steps_per_episode = 50,000, exploration_decay_rate =
-  0.005)
-- [x] support handling fires
-- [ ] rewrite Q-table to NN
 
 ## How to run
 
 To train the Q-table run below. This might take time. Observe the training values through the values printed on the
 screen.
 
-    python main.py --method=ql --device=cpu --train=1 --play=0
+    make train
 
 To solve the maze using pre-trained Q-table run below, and check for the *path*, *trace* and other output files in
 the `checkpoint` directory.
 
-    python main.py --method=ql --device=cpu --play=1 --train=0
+    make play
+
+Print the output path and trace result file.
+
+    make output
 
 ## Results
 
@@ -103,7 +101,8 @@ Below is the brief summary of the directory tree.
 
     ./
     ├── README.md
-    ├── buffer.py                                       -> Buffer (reply memory) implementation for DQN training 
+    ├── buffer.py                                       -> Buffer (reply memory) implementation for DQN training
+    ├── cache.py                                        -> cache buffer for faster access to maze (without fires) 
     ├── checkpoint                                      -> Various result files
     │   ├── 2022_05_06_15_45_09_params.json             -> Result parameters file
     │   ├── 2022_05_06_15_45_09_ql_path.csv             -> Result path file
@@ -117,7 +116,7 @@ Below is the brief summary of the directory tree.
     ├── dqn.py                                          -> DQN implementation
     ├── environment.py                                  -> Maze environment implementation
     ├── main.py                                         -> Main entry point
-    ├── maze20212022.npy                                -> Original maze data file
+    ├── COMP6247Maze20212022.npy                        -> Original maze data file
     ├── params.py                                       -> Parameters file
     ├── qlearning.py                                    -> Q-Learning implementation
     ├── read_maze.py                                    -> Original maze interface
