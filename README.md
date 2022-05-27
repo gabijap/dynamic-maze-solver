@@ -25,9 +25,9 @@ Print the output path and trace result file.
 
 Results could be found in the `checkpoint` directory.
 
-### Path
+### Output
 
-`*_ql_path.csv` - contains *path* with the minimum traversal time from the top left corner (1, 1), to the bottom right
+`*_output.txt` - contains *path* with the minimum traversal time from the top left corner (1, 1), to the bottom right
 corner (199, 199). The printout shows the step number, y and x coordinates, and the action taken (`0` - left, `1` - up, `2` - right,
 `3` - down, `4` - stay).
 
@@ -40,9 +40,8 @@ Sample:
     3, 3, 1, 3
     ...
 
-### Trace
 
-`*_trace.txt` - contains *trace* in the environment, at each time unit, what was observed in surroundings, and what
+The *path* is followed by agent's *trace* in the environment, at each time step, what was observed in surroundings, and what
 action was taken. The printout shows the step number, y and x coordinates, "around" array of free cells, also
 "around" array of fires, also the action taken.
 
@@ -117,7 +116,6 @@ Below is the brief summary of the directory tree.
         ├── dqn_model.py                                -> DQN with a convolutional neural network implementation
         ├── dqn_train.py                                -> DQN with a convolutional neural network training
         ├── utilities.py                                -> Script for plotting results for DQN
-    ├── cache.py                                        -> cache buffer for faster access to maze (without fires)
     ├── environment.py                                  -> Maze environment implementation
     ├── main.py                                         -> Main entry point
     ├── COMP6247Maze20212022.npy                        -> Original maze data file
