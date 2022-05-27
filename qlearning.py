@@ -142,7 +142,7 @@ class Qlearning:
         rewards_curr_episode = 0.0
         self.actions_history[:] = 0
 
-        for step in range(args.steps):
+        for step in tqdm(range(args.steps)):
 
             # No explore, just exploit
             action = np.argmax(self.q_table[state, :])

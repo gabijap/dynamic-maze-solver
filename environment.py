@@ -2,7 +2,7 @@ import numpy as np
 
 from cache import Cache
 from params import args
-from read_maze import get_local_maze_information
+from read_maze import load_maze, get_local_maze_information
 
 
 class Environment:
@@ -13,7 +13,12 @@ class Environment:
         self.reward = 0
         self.fire_code = 0  # decimal number from 0..15, encoding 1 of 4 fire locations (left, up, right, down): '1111'
         self.visited_valid_cells = set()
-        self.maze_cache = Cache()
+
+        # This should be loaded only once
+        load_maze()
+
+        if args.train:
+            self.maze_cache = Cache()
 
         # Interesting stats
         self.total_visited_cells = set()  # Larger is better during training
@@ -26,7 +31,7 @@ class Environment:
         self.trace = []
         self.shortest = np.full(2, 999999999)
 
-        self.reset(1)
+        self.reset(0)
 
     def reset(self, neglect_fire):
         self.x = 1

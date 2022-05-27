@@ -9,9 +9,6 @@ from read_maze import load_maze, get_local_maze_information
 
 class Cache:
     def __init__(self):
-        # This should be loaded only once
-        load_maze()
-
         self.maze = np.zeros((args.maze_size + 2, args.maze_size + 2, 2), dtype=int)  # or dtype=np.float32
 
         self.fill_cache(2)
