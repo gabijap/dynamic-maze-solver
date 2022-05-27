@@ -1,3 +1,6 @@
+"""[Source] Chapter 6 M. Lapan, Deep Reinforcement Learning Hands-On: Apply modern RL methods to practical problems of chatbots,
+robotics, discrete optimization, web automation, and more. Packt Publishing Ltd, 2020."""
+
 import collections
 import random
 import time

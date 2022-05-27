@@ -38,21 +38,3 @@ if __name__ == "__main__":
         if args.play:
             ql.load_model(args.ql_best_fires_model_file)
             ql.play()
-
-    '''
-    elif args.dqn_linear:
-        # Solve by DQN Linear method
-        if args.train:
-            train()
-        if args.play:
-            print('TBD')
-
-    elif args.dqn_cnn:
-
-        # Solve by DQN CNN method
-        if args.train:
-            train()
-        if args.play:
-            print('TBD')
-            
-    '''

@@ -395,8 +395,8 @@ class DeepQNetwork(nn.Module):
     def __init__(self, lr, input_dims, fc1_dims, fc2_dims, n_actions):
         super(DeepQNetwork, self).__init__()
 
-        self.layer_1 = nn.Linear(in_features=9, out_features=128)  # TODO 256???
-        self.layer_2 = nn.Linear(in_features=128, out_features=128)  # TODO 256???
+        self.layer_1 = nn.Linear(in_features=9, out_features=128)
+        self.layer_2 = nn.Linear(in_features=128, out_features=128)
         self.layer_3 = nn.Linear(in_features=128, out_features=64)
         self.output_layer = nn.Linear(in_features=64, out_features=n_actions)
 

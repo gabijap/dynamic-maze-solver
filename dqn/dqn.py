@@ -1,7 +1,9 @@
-# This is an implementation of the NN aimed at estimation of the Q-Values for each state-action pair in a given
-# environment.
-#
-# States -> NN -> Q-values
+"""[Source] Chapter 6 M. Lapan, Deep Reinforcement Learning Hands-On: Apply modern RL methods to practical problems of chatbots,
+robotics, discrete optimization, web automation, and more. Packt Publishing Ltd, 2020.
+This is an implementation of the NN aimed at estimation of the Q-Values for each state-action pair in a given
+environment. States -> NN -> Q-values
+"""
+
 import random
 from collections import namedtuple
 
